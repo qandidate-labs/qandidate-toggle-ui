@@ -2,3 +2,4 @@ logs/*
 !.gitkeep
 node_modules/
 app/js/config.js
+app/bower_components/
