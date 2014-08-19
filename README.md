@@ -3,6 +3,8 @@ Toggle UI
 
 A ui for managing your toggles.
 
+[![Build Status](https://travis-ci.org/qandidate-labs/qandidate-toggle-ui.svg?branch=master)](https://travis-ci.org/qandidate-labs/qandidate-toggle-ui)
+
 ## About
 
 Read the our blog post series about this repository at:
