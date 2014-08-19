@@ -1,0 +1,3 @@
+<input ng-model="inSetValue" ng-enter="addInSetValue(inSetValue, condition.operator, this);" class="input-mini">
+<span ng-repeat="value in condition.operator.values"> {{ value }} <a ng-click="deleteInSetValue(value, condition.operator)">[x]</a>,
+</span>

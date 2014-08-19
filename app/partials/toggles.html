@@ -1,0 +1,51 @@
+<div class="alert alert-warning"><strong>Warning!</strong> Don't forget to hit 'SAVE toggle' once you added or updated a toggle</div>
+
+<p ng-show="toggles.length == 0">There are no toggles here!</p>
+
+<form>
+<table class="table table-border">
+  <thead>
+    <tr>
+      <th>Toggle name</th>
+      <th>Toggle status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="toggle in toggles" class="toggle">
+    <tr>
+      <td><input ng-model="toggle.name"></td>
+      <td><select ng-model="toggle.status" ng-options="s.value as s.label for s in statuses"></select></td>
+      <td>
+        <a href ng-click="addCondition(toggle)" class="btn btn-small btn-primary">ADD Condition</a>
+        <a href ng-click="delete(toggle)" class="delete btn btn-small btn-danger">DELETE Toggle</a>
+        <a href ng-click="update(toggle)" class="update btn btn-small btn-warning" >SAVE Toggle</a>
+      </td>
+    </tr>
+    <tr ng-show="toggle.conditions.length">
+      <td colspan="3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Key</th>
+              <th>Operator</th>
+              <th>Value</th>
+              <th>Action</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="condition in toggle.conditions" class="conditions">
+              <td>{{ condition.name }}</td>
+              <td><input ng-model="condition.key"></td>
+              <td><select ng-model="condition.operator.name" ng-options="o.value as o.label for o in operators" ng-change="changeOperator(condition.operator);"></select></td>
+              <td><div ng-include="'partials/operator/' + condition.operator.name + '.html'" style="display:inline;"></div></td>
+              <td><a href ng-click="deleteCondition(condition, toggle)" class="delete btn btn-small btn-danger">DELETE Condition</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>
+
+<a href ng-click="add()" class="btn btn-small btn-primary">ADD Toggle</a>

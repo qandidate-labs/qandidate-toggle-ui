@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" ng-app="toggle-ui-test">
+<head>
+  <meta charset="utf-8">
+  <title>Toggle</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <div ng-view></div>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="../test/lib/angular/angular-mocks.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script>
+    toggleApp.constant('TOGGLE_API_BASE_URL', 'http://toggles.dev');
+  </script>
+  <script src="../test/e2e/app-test.js"></script>
+</body>
+</html>

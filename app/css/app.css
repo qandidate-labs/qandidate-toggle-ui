@@ -1,0 +1,7 @@
+.toggle .update {
+    display: none;
+}
+
+.ng-dirty .update {
+    display: inline-block;
+}
