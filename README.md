@@ -13,6 +13,11 @@ Read our blog post series about this repository at:
 
 ## Installation
 
+First, install the dependencies:
+```
+bower install
+```
+
 To use the UI, you will need to create your config.js to configure the API endpoint.
 
 ```
