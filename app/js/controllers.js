@@ -41,8 +41,8 @@ angular.module('toggle-ui.controllers', [])
 
     $scope.update = function(toggle) {
         var originalName = toggle.originalName;
-        toggle.$put();
         toggle.originalName = toggle.name;
+        toggle.$put();
 
         if (originalName != '' && originalName != toggle.name) {
             var oldToggle = {};
@@ -77,7 +77,9 @@ angular.module('toggle-ui.controllers', [])
     }
 
     $scope.addInSetValue = function(value, operator, scope) {
-        operator.values.push(value);
+        if (operator.values.indexOf(value) == -1) {
+            operator.values.push(value);
+        }
         scope.inSetValue = '';
     }
 

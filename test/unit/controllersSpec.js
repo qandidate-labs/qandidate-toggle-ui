@@ -214,5 +214,27 @@ describe('toggle-ui controllers', function(){
 
       expect(scope.toggles[0]).toEqualData(newToggle);
     });
+
+    it('ignores duplicates when calling inSetValue', function() {
+      $httpBackend.flush(); // load the toggles
+
+      var toggle = scope.toggles[0];
+      var condition = toggle.conditions[1]; // in-set condition
+
+      scope.addInSetValue(1337, condition.operator, scope);
+
+      expect(scope.toggles[0].conditions[1].operator.values).toEqualData([1337, 1028]);
+    });
+
+    it('adds a value when calling addInSetValue', function() {
+      $httpBackend.flush(); // load the toggles
+
+      var toggle = scope.toggles[0];
+      var condition = toggle.conditions[1]; // in-set condition
+
+      scope.addInSetValue("test", condition.operator, scope);
+
+      expect(scope.toggles[0].conditions[1].operator.values).toEqualData([1337, 1028, "test"]);
+    });
   });
 });
