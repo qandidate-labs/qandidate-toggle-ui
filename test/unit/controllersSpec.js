@@ -187,7 +187,30 @@ describe('toggle-ui controllers', function(){
       $httpBackend.flush();
 
       var newToggle = togglesData[0];
-      newToggle.name = 'toggling4';
+      newToggle.originalName = newToggle.name = 'toggling4';
+
+      expect(scope.toggles[0]).toEqualData(newToggle);
+    });
+
+    it('can do a second rename', function() {
+      $httpBackend.flush(); // load the toggles
+
+      var toggle = scope.toggles[0];
+
+      toggle.name = 'toggling5';
+
+      $httpBackend.expectPUT('http://127.0.0.1:8080/toggles/toggling5').
+      respond(204, '');
+
+      $httpBackend.expectDELETE('http://127.0.0.1:8080/toggles/toggling4').
+      respond(200, '');
+
+      scope.update(toggle);
+
+      $httpBackend.flush();
+
+      var newToggle = togglesData[0];
+      newToggle.originalName = newToggle.name = 'toggling5';
 
       expect(scope.toggles[0]).toEqualData(newToggle);
     });
