@@ -45,6 +45,7 @@ $ scripts/test.sh --single-run
 And the e2e tests:
 
 ```
+$ scripts/web-server.js
 $ scripts/e2e-test.sh --single-run
 ```
 
