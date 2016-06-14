@@ -40,14 +40,16 @@ angular.module('toggle-ui.controllers', [])
     }
 
     $scope.update = function(toggle) {
-      toggle.$put();
+        var originalName = toggle.originalName;
+        toggle.originalName = toggle.name;
+        toggle.$put();
 
-      if (toggle.originalName != '' && toggle.originalName != toggle.name) {
-          var oldToggle = {};
-          angular.copy(toggle, oldToggle);
-          oldToggle.name = toggle.originalName;
-          oldToggle.$delete();
-      }
+        if (originalName != '' && originalName != toggle.name) {
+            var oldToggle = {};
+            angular.copy(toggle, oldToggle);
+            oldToggle.name = originalName;
+            oldToggle.$delete();
+        }
     }
 
     $scope.add = function() {
@@ -75,7 +77,9 @@ angular.module('toggle-ui.controllers', [])
     }
 
     $scope.addInSetValue = function(value, operator, scope) {
-        operator.values.push(value);
+        if (operator.values.indexOf(value) == -1) {
+            operator.values.push(value);
+        }
         scope.inSetValue = '';
     }
 

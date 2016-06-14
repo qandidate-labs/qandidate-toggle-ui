@@ -13,7 +13,7 @@
   </thead>
   <tbody ng-repeat="toggle in toggles" class="toggle">
     <tr>
-      <td><input ng-model="toggle.name"></td>
+      <td><input ng-model="toggle.name" ng-enter="update(toggle)"></td>
       <td><select ng-model="toggle.status" ng-options="s.value as s.label for s in statuses"></select></td>
       <td>
         <a href ng-click="addCondition(toggle)" class="btn btn-small btn-primary">ADD Condition</a>
