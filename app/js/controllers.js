@@ -25,7 +25,8 @@ angular.module('toggle-ui.controllers', [])
         {value: 'less-than-equal', label: 'less than equal'},
         {value: 'greater-than-equal', label: 'greater than equal'},
         {value: 'percentage', label: 'percentage'},
-        {value: 'in-set', label: 'in set'}
+        {value: 'in-set', label: 'in set'},
+        {value: 'has-intersection', label: 'has intersection'}
     ];
     $scope.statuses = [
         {value: 'always-active', label: 'always active'},
@@ -76,14 +77,14 @@ angular.module('toggle-ui.controllers', [])
       toggle.conditions.splice(toggle.conditions.indexOf(condition), 1);
     }
 
-    $scope.addInSetValue = function(value, operator, scope) {
+    $scope.addValueInSet = function(value, operator, scope) {
         if (operator.values.indexOf(value) == -1) {
             operator.values.push(value);
         }
-        scope.inSetValue = '';
+        scope.multipleValue = '';
     }
 
-    $scope.deleteInSetValue = function(value, operator) {
+    $scope.deleteValueOfSet = function(value, operator) {
         operator.values.splice(operator.values.indexOf(value), 1);
     }
 
