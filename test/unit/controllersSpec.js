@@ -215,24 +215,24 @@ describe('toggle-ui controllers', function(){
       expect(scope.toggles[0]).toEqualData(newToggle);
     });
 
-    it('ignores duplicates when calling inSetValue', function() {
+    it('ignores duplicates when calling multipleValue', function() {
       $httpBackend.flush(); // load the toggles
 
       var toggle = scope.toggles[0];
       var condition = toggle.conditions[1]; // in-set condition
 
-      scope.addInSetValue(1337, condition.operator, scope);
+      scope.addValueInSet(1337, condition.operator, scope);
 
       expect(scope.toggles[0].conditions[1].operator.values).toEqualData([1337, 1028]);
     });
 
-    it('adds a value when calling addInSetValue', function() {
+    it('adds a value when calling addValueInSet', function() {
       $httpBackend.flush(); // load the toggles
 
       var toggle = scope.toggles[0];
       var condition = toggle.conditions[1]; // in-set condition
 
-      scope.addInSetValue("test", condition.operator, scope);
+      scope.addValueInSet("test", condition.operator, scope);
 
       expect(scope.toggles[0].conditions[1].operator.values).toEqualData([1337, 1028, "test"]);
     });
