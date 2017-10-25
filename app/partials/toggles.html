@@ -33,6 +33,7 @@
               <th>Action</th>
           </thead>
           <tbody>
+            <label>Strategy: </label><tr ng-show="toggle.conditions.length"><select ng-model="toggle.strategy" ng-options="s.value as s.label for s in strategy"></select></tr>
             <tr ng-repeat="condition in toggle.conditions" class="conditions">
               <td>{{ condition.name }}</td>
               <td><input ng-model="condition.key"></td>
