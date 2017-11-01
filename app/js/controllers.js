@@ -90,7 +90,7 @@ angular.module('toggle-ui.controllers', [])
 
     $scope.changeOperator = function(operator) {
 
-        if ('in-set' == operator.name) {
+        if ('in-set' == operator.name || 'has-intersection' == operator.name) {
             operator.values = [];
             delete operator.value;
             delete operator.percentage;
