@@ -11,7 +11,7 @@
       <th>Actions</th>
     </tr>
   </thead>
-  <tbody ng-repeat="toggle in toggles" class="toggle">
+  <tbody ng-repeat="toggle in toggles | orderBy:'name'" class="toggle">
     <tr>
       <td><input ng-model="toggle.name" ng-enter="update(toggle)"></td>
       <td><select ng-model="toggle.status" ng-options="s.value as s.label for s in statuses"></select></td>
