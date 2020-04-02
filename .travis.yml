@@ -5,6 +5,13 @@ node_js:
 services:
   - xvfb
 
+env:
+  global:
+    - MOZ_HEADLESS=1
+
+addons:
+  firefox: latest
+
 before_script:
   - nvm install-latest-npm
   - npm install --quiet -g karma bower
