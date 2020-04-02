@@ -6,7 +6,7 @@ services:
   - xvfb
 
 before_script:
-  - npm update -g npm
+  - nvm install-latest-npm
   - npm install --quiet -g karma bower
   - bower install
   - ./scripts/web-server.js > /dev/null &
